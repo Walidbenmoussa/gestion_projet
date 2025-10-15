@@ -346,7 +346,4 @@ async def comments(c:Comments,session:Session=Depends(get_session),id_user :str=
 
 
 
-if __name__ == "__main__":
-    uvicorn.run("main:app",reload=True)
-
 

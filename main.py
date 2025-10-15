@@ -70,7 +70,7 @@ async def login(identifiant:LoginModel ,response:Response, session : Session = D
     u = session.exec(select(Users).where(Users.email == identifiant.email)).first()
     token=create_access_token(u.id)
     if u and check_psw(identifiant.psw,u.psw):
-         cookie = (
+        cookie = (
         f"access_token={token}; "
         f"Max-Age=3600; "
         f"Secure; "
@@ -86,6 +86,8 @@ async def login(identifiant:LoginModel ,response:Response, session : Session = D
         raise HTTPException(status_code=404 , detail='identifiants incorrects')
    
         
+                
+         
          
 
 

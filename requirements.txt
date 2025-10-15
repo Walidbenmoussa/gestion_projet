@@ -1,1 +1,6 @@
-
+sqlmodel
+pydantic
+zoneinfo
+fastapi
+PyJWT
+bcrypt

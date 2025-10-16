@@ -70,15 +70,15 @@ async def login(identifiant:LoginModel ,response:Response, session : Session = D
     u = session.exec(select(Users).where(Users.email == identifiant.email)).first()
     token=create_access_token(u.id)
     if u and check_psw(identifiant.psw,u.psw):
-        cookie = (
-        f"access_token={token}; "
-        f"Max-Age=3600; "
-        f"Secure; "
-        f"SameSite=None; "
-        f"Partitioned"
-        f"HttpOnly")
-        response.headers.append("Set-Cookie", cookie)
-       
+
+        response.set_cookie(
+        key="access_token",
+        value=token,
+        max_age=3600,
+        path="/",
+        secure=True,
+        httponly=True,
+        samesite="none")
         return UserBase.model_validate(u)
 
     

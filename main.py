@@ -74,10 +74,12 @@ async def login(identifiant:LoginModel ,response:Response, session : Session = D
         f"access_token={token}; "
         f"Max-Age=3600; "
         f"Secure; "
-        f"SameSite=None; "
+        f"SameSite=Lax; "
         f"Path=/; "
+        f"Domain=.onrender.com; "
         f"HttpOnly")
         response.headers.append("Set-Cookie", cookie)
+       
         return UserBase.model_validate(u)
 
     

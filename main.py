@@ -19,14 +19,15 @@ app=FastAPI()
 
      
 
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://gestion-projet-front.onrender.com"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-    
+    allow_origins=["https://gestion-projet-front.onrender.com"],  # ton front-end exact
+    allow_credentials=True,  # pour permettre l’envoi des cookies
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],  # ajoute PATCH ici
+    allow_headers=["Content-Type", "Authorization"],  # headers explicitement autorisés
 )
+
 
 
 # Classe personnalisée pour gérer les erreurs globalement

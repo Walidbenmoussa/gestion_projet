@@ -156,8 +156,8 @@ async def getProject(id_project : int ,session : Session=Depends(get_session),id
 
    
 @app.get('/projects')
-async def getAllPojects(session: Session=Depends(get_session),id_user :str=Depends(verify_token)):
-    
+async def getAllPojects(session: Session=Depends(get_session)):
+    id_user=1
     user=session.get(Users,id_user)
     user.projects.extend(user.projects_creator)
     return user.projects

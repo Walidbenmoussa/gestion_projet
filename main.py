@@ -75,7 +75,6 @@ async def login(identifiant:LoginModel ,response:Response, session : Session = D
         f"Max-Age=3600; "
         f"Secure; "
         f"SameSite=None; "
-        f"Partitioned; "
         f"Path=/; "
         f"HttpOnly")
         response.headers.append("Set-Cookie", cookie)
